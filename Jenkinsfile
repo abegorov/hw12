@@ -33,6 +33,7 @@ pipeline {
                             "--build-arg=\"DB_HOST=${DB_HOST}\" " +
                             "--build-arg=\"DB_NAME=${DB_NAME}\" " +
                             "--build-arg=\"DB_USER=${DB_USER}\" " +
+                            "--secret db_password" +
                             "."
                         )
                         docker.withRegistry('', 'dockerhub_credentials') {
