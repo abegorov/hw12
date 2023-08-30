@@ -26,13 +26,14 @@ pipeline {
                     script {
                         writeFile(
                             file: 'db_password',
-                            text: "${DB_PASSWORD}"
+                            text: DB_PASSWORD
                         )
                         def image = docker.build(
                             "abegorov/app42:$VERSION",
                             "--build-arg=\"DB_HOST=${DB_HOST}\" " +
                             "--build-arg=\"DB_NAME=${DB_NAME}\" " +
-                            "--build-arg=\"DB_USER=${DB_USER}\" "
+                            "--build-arg=\"DB_USER=${DB_USER}\" " +
+                            "."
                         )
                         docker.withRegistry('', 'dockerhub_credentials') {
                             image.push()
