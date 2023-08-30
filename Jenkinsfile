@@ -20,10 +20,13 @@ pipeline {
             }
             steps {
                 dir('app42') {
+                    environment {
+                        DB_PASSWORD = credentials('db_password')
+                    }
                     script {
                         writeFile(
                             file: 'app42/db_password',
-                            text: credentials('db_password')
+                            text: "${DB_PASSWORD}"
                         )
                         def image = docker.build(
                             "abegorov/app42:$VERSION",
