@@ -36,6 +36,10 @@ case "$1" in
     kubectl)
         install_kubectl
         ;;
+    rancher)
+        install_docker
+        docker run --privileged -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher:v2.7.6-linux-amd64
+        ;;
     jenkins)
         install_docker
         pushd jenkins
