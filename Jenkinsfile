@@ -18,11 +18,11 @@ pipeline {
                     args '-v /var/run/docker.sock:/var/run/docker.sock'
                 }
             }
+            environment {
+                DB_PASSWORD = credentials('db_password')
+            }
             steps {
                 dir('app42') {
-                    environment {
-                        DB_PASSWORD = credentials('db_password')
-                    }
                     script {
                         writeFile(
                             file: 'app42/db_password',
