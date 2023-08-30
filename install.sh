@@ -21,9 +21,20 @@ function install_docker() {
     apt install --yes docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 }
 
+function install_kubectl() {
+    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+    echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+    install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+    rm kubectl.sha256 kubectl
+}
+
 case "$1" in
     docker)
         install_docker
+        ;;
+    kubectl)
+        install_kubectl
         ;;
     jenkins)
         install_docker
@@ -41,7 +52,7 @@ case "$1" in
         fi
         ;;
     *)
-        echo "$0 docker|jenkins|agent"
+        echo "$0 docker|kubectl|jenkins|agent"
         echo ""
         ;;
 esac
