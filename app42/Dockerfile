@@ -26,4 +26,5 @@ RUN <<EOT /bin/bash
 EOT
 
 FROM tomcat:9-jre8-temurin
-COPY --from=builder --link /build/app42.war /usr/local/tomcat/webapps/
+WORKDIR /usr/local/tomcat/webapps
+COPY --from=builder --link /build/app42.war /usr/local/tomcat/webapps/ROOT.war
