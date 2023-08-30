@@ -38,7 +38,13 @@ case "$1" in
         ;;
     rancher)
         install_docker
-        docker run --privileged -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher:v2.7.6-linux-amd64
+        docker run --name rancher \
+            --privileged \
+            --detach \
+            --restart=unless-stopped \
+            --publish 80:80 \
+            --publish 443:443 \
+            rancher/rancher:stable
         ;;
     jenkins)
         install_docker
