@@ -25,7 +25,7 @@ pipeline {
                 dir('app42') {
                     script {
                         writeFile(
-                            file: 'app42/db_password',
+                            file: 'db_password',
                             text: "${DB_PASSWORD}"
                         )
                         def image = docker.build(
