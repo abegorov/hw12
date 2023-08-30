@@ -44,7 +44,7 @@ case "$1" in
             --restart=unless-stopped \
             --publish 80:80 \
             --publish 443:443 \
-            rancher/rancher:stable
+            rancher/rancher:v2.4-head
         ;;
     jenkins)
         install_docker
