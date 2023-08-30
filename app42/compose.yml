@@ -4,6 +4,7 @@ services:
     build:
       context: .
       args:
+        DB_HOST: ${DB_HOST:-}
         DB_NAME: ${DB_NAME:-}
         DB_USER: ${DB_USER:-}
       secrets:
@@ -16,6 +17,7 @@ services:
     restart: unless-stopped
 
   db:
+    hostname: ${DB_HOST:-}
     image: mariadb:latest
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: yes
@@ -23,13 +25,13 @@ services:
       MYSQL_USER: ${DB_USER:-}
       MYSQL_PASSWORD_FILE: /run/secrets/db_password
     volumes:
-      - db-data:/var/lib/mysql
+      - db_data:/var/lib/mysql
     secrets:
       - db_password
     container_name: mysql
 
 volumes:
-  db-data:
+  db_data:
 
 secrets:
   db_password:

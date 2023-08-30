@@ -10,7 +10,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked <<EOT /bin/bash
     git clone https://github.com/shephertz/App42PaaS-Java-MySQL-Sample.git .
 EOT
 COPY --link <<EOT WebContent/Config.properties
-app42.paas.db.ip = db
+app42.paas.db.ip = ${DB_HOST}
 app42.paas.db.port = 3306
 app42.paas.db.name = ${DB_NAME}
 app42.paas.db.username = ${DB_USER}
