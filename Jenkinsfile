@@ -5,7 +5,7 @@ pipeline {
         }
     }
     parameters {
-        string(name: 'VERSION', defaultValue: '1.0.${BUILD_NUMBER}', description: 'Docker image version')
+        string(name: 'VERSION', defaultValue: "1.0.${BUILD_NUMBER}"", description: 'Docker image version')
         string(name: 'DB_HOST', defaultValue: 'app42-db', description: 'Docker image version')
         string(name: 'DB_NAME', defaultValue: 'app42', description: 'Docker image version')
         string(name: 'DB_USER', defaultValue: 'app42', description: 'Docker image version')
