@@ -16,7 +16,7 @@ app42.paas.db.name = "${DB_NAME}"
 app42.paas.db.username = "${DB_USER}"
 EOT
 RUN --mount=type=secret,id=db_password,required=true \
-    echo "app42.paas.db.password = \"$(< /run/secrets/db_password)\"" \
+    echo "app42.paas.db.password = \"$(cat /run/secrets/db_password)\"" \
         >> WebContent/Config.properties
 RUN <<EOT /bin/bash
     set -ex
