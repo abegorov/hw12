@@ -21,9 +21,10 @@ pipeline {
             steps {
                 dir('app42') {
                     script {
-                        writeFile
+                        writeFile(
                             file: 'app42/db_password',
                             text: credentials('db_password')
+                        )
                         def image = docker.build(
                             "abegorov/app42:$VERSION",
                             "--build-arg=\"DB_HOST=${DB_HOST}\" " +
