@@ -56,7 +56,7 @@ case "$1" in
         fi
         ;;
     *)
-        echo "$0 docker|kubectl|jenkins|agent"
+        echo "$0 docker|kubectl|rancher|jenkins|agent"
         echo ""
         ;;
 esac
