@@ -1,0 +1,36 @@
+services:
+  app42:
+    image: app42
+    build:
+      context: .
+      args:
+        DB_NAME: ${DB_NAME:-}
+        DB_USER: ${DB_USER:-}
+      secrets:
+        - db_password
+    container_name: app42
+    ports:
+      - "80:8080"
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  db:
+    image: mariadb:latest
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: yes
+      MYSQL_DATABASE: ${DB_NAME:-}
+      MYSQL_USER: ${DB_USER:-}
+      MYSQL_PASSWORD_FILE: /run/secrets/db_password
+    volumes:
+      - db-data:/var/lib/mysql
+    secrets:
+      - db_password
+    container_name: mysql
+
+volumes:
+  db-data:
+
+secrets:
+  db_password:
+    file: ./db_password
