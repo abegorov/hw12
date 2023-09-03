@@ -38,7 +38,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: abegorov/app42:1.0.10
+      - image: abegorov/app42:{{VERSION}}
         name: app42
         ports:
         - containerPort: 8080
