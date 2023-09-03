@@ -4,6 +4,7 @@ metadata:
   name: app42
   labels:
     app: app42
+  namespace: default
 spec:
   type: NodePort
   ports:
@@ -22,6 +23,7 @@ metadata:
   name: app42
   labels:
     app: app42
+  namespace: default
 spec:
   selector:
     matchLabels:
