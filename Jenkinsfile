@@ -56,16 +56,16 @@ pipeline {
                     sh 'sed -i "s@{{DB_PASSWORD}}@${DB_PASSWORD}@" kube-mysql.yml'
                     withKubeConfig(
                             caCertificate: '''-----BEGIN CERTIFICATE-----
-    MIIBiTCCAS6gAwIBAgIBADAKBggqhkjOPQQDAjA7MRwwGgYDVQQKExNkeW5hbWlj
-    bGlzdGVuZXItb3JnMRswGQYDVQQDExJkeW5hbWljbGlzdGVuZXItY2EwHhcNMjMw
-    OTAzMTcyNzQyWhcNMzMwODMxMTcyNzQyWjA7MRwwGgYDVQQKExNkeW5hbWljbGlz
-    dGVuZXItb3JnMRswGQYDVQQDExJkeW5hbWljbGlzdGVuZXItY2EwWTATBgcqhkjO
-    PQIBBggqhkjOPQMBBwNCAAQM14zbi9NtGYwIlLJRiMvOziKO34Zia5kQwcTc39o9
-    uGQAibxvMLKDfANmMn570WeFN3Pu57+uBZI/dRU5TjYloyMwITAOBgNVHQ8BAf8E
-    BAMCAqQwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNJADBGAiEAgk+uk1UF
-    KnlsxzstzV6+0akvftM2ERhlhh7P/1JJkLYCIQDW4BvPDBAagrwdpWARa9hBM7qM
-    X5YrutqC/+V17gukmg==
-    -----END CERTIFICATE-----''',
+MIIBiTCCAS6gAwIBAgIBADAKBggqhkjOPQQDAjA7MRwwGgYDVQQKExNkeW5hbWlj
+bGlzdGVuZXItb3JnMRswGQYDVQQDExJkeW5hbWljbGlzdGVuZXItY2EwHhcNMjMw
+OTAzMTcyNzQyWhcNMzMwODMxMTcyNzQyWjA7MRwwGgYDVQQKExNkeW5hbWljbGlz
+dGVuZXItb3JnMRswGQYDVQQDExJkeW5hbWljbGlzdGVuZXItY2EwWTATBgcqhkjO
+PQIBBggqhkjOPQMBBwNCAAQM14zbi9NtGYwIlLJRiMvOziKO34Zia5kQwcTc39o9
+uGQAibxvMLKDfANmMn570WeFN3Pu57+uBZI/dRU5TjYloyMwITAOBgNVHQ8BAf8E
+BAMCAqQwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNJADBGAiEAgk+uk1UF
+KnlsxzstzV6+0akvftM2ERhlhh7P/1JJkLYCIQDW4BvPDBAagrwdpWARa9hBM7qM
+X5YrutqC/+V17gukmg==
+-----END CERTIFICATE-----''',
                             clusterName: 'abe',
                             contextName: 'abe',
                             credentialsId: 'kubernetes_token',
